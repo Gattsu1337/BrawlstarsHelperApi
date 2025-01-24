@@ -1,0 +1,6 @@
+@Brawlstars_Helper_HostAddress = http://localhost:5269
+
+GET {{Brawlstars_Helper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
