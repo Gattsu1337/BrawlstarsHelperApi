@@ -75,7 +75,7 @@ namespace API
             );
 
             builder.Services.AddDbContext<BrawlstarsHelperDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("API")
                 )
             );

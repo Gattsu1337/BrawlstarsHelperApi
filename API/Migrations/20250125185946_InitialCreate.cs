@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,19 +15,17 @@ namespace API.Migrations
                 name: "Brawlers",
                 columns: table => new
                 {
-                    BrawlerId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rarity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Health = table.Column<int>(type: "int", nullable: false),
-                    Attack = table.Column<int>(type: "int", nullable: false),
-                    MovementSpeed = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReloadSpeed = table.Column<double>(type: "float", nullable: false),
-                    Range = table.Column<double>(type: "float", nullable: false),
-                    SuperChargeRate = table.Column<double>(type: "float", nullable: false),
-                    HyperChargeRate = table.Column<double>(type: "float", nullable: false)
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<string>(type: "TEXT", nullable: false),
+                    Rarity = table.Column<string>(type: "TEXT", nullable: false),
+                    Health = table.Column<int>(type: "INTEGER", nullable: false),
+                    Attack = table.Column<int>(type: "INTEGER", nullable: false),
+                    MovementSpeed = table.Column<string>(type: "TEXT", nullable: false),
+                    ReloadSpeed = table.Column<string>(type: "TEXT", nullable: false),
+                    Range = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,12 +36,12 @@ namespace API.Migrations
                 name: "Clubs",
                 columns: table => new
                 {
-                    ClubId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MembersCount = table.Column<int>(type: "int", nullable: false),
-                    RequiredTrophies = table.Column<int>(type: "int", nullable: false)
+                    ClubId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    MembersCount = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequiredTrophies = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,11 +52,11 @@ namespace API.Migrations
                 name: "Gears",
                 columns: table => new
                 {
-                    GearId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UnlockCost = table.Column<int>(type: "int", nullable: false)
+                    GearId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    UnlockCost = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,11 +67,12 @@ namespace API.Migrations
                 name: "Maps",
                 columns: table => new
                 {
-                    MapId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mode = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    MapId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Mode = table.Column<string>(type: "TEXT", nullable: false),
+                    Stats = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,10 +83,10 @@ namespace API.Migrations
                 name: "Modifiers",
                 columns: table => new
                 {
-                    ModifierId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ModifierId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,13 +97,13 @@ namespace API.Migrations
                 name: "SeasonalMaps",
                 columns: table => new
                 {
-                    SeasonalMapId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SeasonStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SeasonEndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    SeasonalMapId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Mode = table.Column<string>(type: "TEXT", nullable: false),
+                    SeasonStartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    SeasonEndDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,12 +114,12 @@ namespace API.Migrations
                 name: "Gadgets",
                 columns: table => new
                 {
-                    GadgetId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrawlerId = table.Column<int>(type: "int", nullable: false),
-                    IsChosen = table.Column<bool>(type: "bit", nullable: false)
+                    GadgetId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsChosen = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -137,11 +136,14 @@ namespace API.Migrations
                 name: "HyperCharges",
                 columns: table => new
                 {
-                    HyperChargeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrawlerId = table.Column<int>(type: "int", nullable: false)
+                    HyperChargeId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SpeedIncrease = table.Column<int>(type: "INTEGER", nullable: false),
+                    DamageIncrease = table.Column<int>(type: "INTEGER", nullable: false),
+                    ShieldIncrease = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,12 +160,12 @@ namespace API.Migrations
                 name: "StarPowers",
                 columns: table => new
                 {
-                    StarPowerId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrawlerId = table.Column<int>(type: "int", nullable: false),
-                    IsChosen = table.Column<bool>(type: "bit", nullable: false)
+                    StarPowerId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsChosen = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -180,12 +182,12 @@ namespace API.Migrations
                 name: "Accounts",
                 columns: table => new
                 {
-                    AccountId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClubId = table.Column<int>(type: "int", nullable: true)
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    ClubId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,9 +204,9 @@ namespace API.Migrations
                 name: "BrawlerGears",
                 columns: table => new
                 {
-                    BrawlerId = table.Column<int>(type: "int", nullable: false),
-                    GearId = table.Column<int>(type: "int", nullable: false),
-                    IsUnlocked = table.Column<bool>(type: "bit", nullable: false)
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    GearId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsUnlocked = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -227,11 +229,11 @@ namespace API.Migrations
                 name: "SeasonalModifiers",
                 columns: table => new
                 {
-                    SeasonalModifierId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SeasonalMapId = table.Column<int>(type: "int", nullable: false)
+                    SeasonalModifierId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    SeasonalMapId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -248,8 +250,8 @@ namespace API.Migrations
                 name: "AccountBrawler",
                 columns: table => new
                 {
-                    BrawlerId = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: false)
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -272,21 +274,21 @@ namespace API.Migrations
                 name: "AccountStats",
                 columns: table => new
                 {
-                    AccountStatsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountId = table.Column<int>(type: "int", nullable: false),
-                    Gems = table.Column<int>(type: "int", nullable: false),
-                    PowerPoints = table.Column<int>(type: "int", nullable: false),
-                    Coins = table.Column<int>(type: "int", nullable: false),
-                    Credits = table.Column<int>(type: "int", nullable: false),
-                    Bling = table.Column<int>(type: "int", nullable: false),
-                    Trophies = table.Column<int>(type: "int", nullable: false),
-                    TrophiesHighest = table.Column<int>(type: "int", nullable: false),
-                    RankedRank = table.Column<int>(type: "int", nullable: false),
-                    RankedHighestRank = table.Column<int>(type: "int", nullable: false),
-                    SoloVictories = table.Column<int>(type: "int", nullable: false),
-                    DuoVictorires = table.Column<int>(type: "int", nullable: false),
-                    TrioVictories = table.Column<int>(type: "int", nullable: false)
+                    AccountStatsId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Gems = table.Column<int>(type: "INTEGER", nullable: false),
+                    PowerPoints = table.Column<int>(type: "INTEGER", nullable: false),
+                    Coins = table.Column<int>(type: "INTEGER", nullable: false),
+                    Credits = table.Column<int>(type: "INTEGER", nullable: false),
+                    Bling = table.Column<int>(type: "INTEGER", nullable: false),
+                    Trophies = table.Column<int>(type: "INTEGER", nullable: false),
+                    TrophiesHighest = table.Column<int>(type: "INTEGER", nullable: false),
+                    RankedRank = table.Column<int>(type: "INTEGER", nullable: false),
+                    RankedHighestRank = table.Column<int>(type: "INTEGER", nullable: false),
+                    SoloVictories = table.Column<int>(type: "INTEGER", nullable: false),
+                    DuoVictorires = table.Column<int>(type: "INTEGER", nullable: false),
+                    TrioVictories = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
