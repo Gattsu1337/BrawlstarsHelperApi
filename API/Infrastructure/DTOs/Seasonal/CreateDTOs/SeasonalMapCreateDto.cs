@@ -13,6 +13,7 @@ namespace API.Infrastructure.DTOs.Seasonal.CreateDTOs
         [Required]
         [StringLength(200, MinimumLength = 3)]
         public string Mode { get; set; }
+        public string Stats { get; set; }
         [Required]
         public DateTime SeasonStartDate { get; set; }
         [Required]

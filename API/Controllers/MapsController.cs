@@ -37,6 +37,7 @@ namespace API.Controllers
                     Name = m.Name,
                     Description = m.Description,
                     Mode = m.Mode,
+                    Stats = m.Stats
                 })
                 .ToListAsync();
         }
@@ -58,6 +59,7 @@ namespace API.Controllers
                 Name = map.Name,
                 Description = map.Description,
                 Mode = map.Mode,
+                Stats = map.Stats
             };
         }
 
@@ -83,6 +85,7 @@ namespace API.Controllers
                     Name = mapCreateDto.Name,
                     Description = mapCreateDto.Description,
                     Mode = mapCreateDto.Mode,
+                    Stats = mapCreateDto.Stats
                 };
 
                 _logger.LogInformation("Creating map with Name: {Name}", map.Name);
@@ -98,6 +101,7 @@ namespace API.Controllers
                     Name = map.Name,
                     Description = map.Description,
                     Mode = map.Mode,
+                    Stats = map.Stats
                 });
             }
 
@@ -128,6 +132,7 @@ namespace API.Controllers
 
                 map.Name = mapUpdateDto.Name;
                 map.Description = mapUpdateDto.Description;
+                map.Stats = mapUpdateDto.Stats;
 
                 _logger.LogInformation("Updating Map with name {Name}...", map.Name);
                 _context.Update(map);

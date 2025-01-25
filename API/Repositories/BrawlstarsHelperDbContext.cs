@@ -178,6 +178,11 @@ namespace Common.Repositories
             modelBuilder.Entity<SeasonalMap>()
                 .HasKey(smap => smap.SeasonalMapId);
 
+
+            modelBuilder.Entity<SeasonalMap>()
+                .Property(smap => smap.Stats)
+                .HasColumnType("TEXT");
+
             modelBuilder.Entity<SeasonalMap>()
                 .HasMany(smap => smap.SeasonalModifiers)
                 .WithOne(smod => smod.SeasonalMap)
