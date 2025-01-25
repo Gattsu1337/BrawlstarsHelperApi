@@ -160,6 +160,10 @@ namespace Common.Repositories
             #region Map Config
             modelBuilder.Entity<Map>()
                 .HasKey(m => m.MapId);
+
+            modelBuilder.Entity<Map>()
+                .Property(m => m.Stats)
+                .HasColumnType("TEXT");
             #endregion
 
             #region Modifier Config
@@ -188,8 +192,7 @@ namespace Common.Repositories
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=BrawlstarsHelperDb;Trusted_Connection=True;TrustServerCertificate=True;");
+                optionsBuilder.UseSqlite("Data Source=.\\brawlstars-helper-db\\brawlstarshelperdb.db");
             }
-        }
     }
 }

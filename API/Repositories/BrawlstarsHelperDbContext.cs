@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Common.Repositories
 {
@@ -164,6 +166,7 @@ namespace Common.Repositories
             modelBuilder.Entity<Map>()
                 .Property(m => m.Stats)
                 .HasColumnType("TEXT");
+
             #endregion
 
             #region Modifier Config
@@ -192,7 +195,7 @@ namespace Common.Repositories
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=BrawlstarsHelperDb.sqlite");
+                optionsBuilder.UseSqlite("Data Source=.\\brawlstars-helper-db\\brawlstarshelperdb.db");
 
                 //optionsBuilder.UseSqlServer("Server=localhost;Database=BrawlstarsHelperDb;Trusted_Connection=True;TrustServerCertificate=True;");
             }

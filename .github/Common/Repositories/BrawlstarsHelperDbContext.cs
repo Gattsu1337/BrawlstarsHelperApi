@@ -164,6 +164,7 @@ namespace Common.Repositories
             modelBuilder.Entity<Map>()
                 .Property(m => m.Stats)
                 .HasColumnType("TEXT");
+
             #endregion
 
             #region Modifier Config
@@ -192,7 +193,7 @@ namespace Common.Repositories
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=BrawlstarsHelperDb.sqlite");
+                optionsBuilder.UseSqlite("Data Source=.\\brawlstars-helper-db\\brawlstarshelperdb.db");
             }
         }
     }

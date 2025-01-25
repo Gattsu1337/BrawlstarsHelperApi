@@ -75,9 +75,7 @@ namespace API
             );
 
             builder.Services.AddDbContext<BrawlstarsHelperDbContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly("API")
-                )
+                options.UseSqlite("Data Source=.\\brawlstars-helper-db\\brawlstarshelperdb.db")
             );
             builder.Services.AddCors(options =>
             {
