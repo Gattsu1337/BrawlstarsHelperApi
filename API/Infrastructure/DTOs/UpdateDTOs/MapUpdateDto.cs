@@ -15,5 +15,6 @@ namespace API.Infrastructure.DTOs.UpdateDTOs
         [Required]
         [StringLength(30, MinimumLength = 3)]
         public string Mode { get; set; }
+        public string Stats { get; set; }
     }
 }

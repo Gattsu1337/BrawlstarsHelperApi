@@ -37,6 +37,7 @@ namespace API.Controllers.Seasonal
                     Name = m.Name,
                     Description = m.Description,
                     Mode = m.Mode,
+                    Stats = m.Stats,
                     SeasonStartDate = m.SeasonStartDate,
                     SeasonEndDate = m.SeasonEndDate
                 })
@@ -63,6 +64,7 @@ namespace API.Controllers.Seasonal
                 Name = seasonalMap.Name,
                 Description = seasonalMap.Description,
                 Mode = seasonalMap.Mode,
+                Stats = seasonalMap.Stats,
                 SeasonStartDate = seasonalMap.SeasonStartDate,
                 SeasonEndDate = seasonalMap.SeasonEndDate
             };
@@ -90,6 +92,7 @@ namespace API.Controllers.Seasonal
                     Name = seasonalMapCreateDto.Name,
                     Description = seasonalMapCreateDto.Description,
                     Mode = seasonalMapCreateDto.Mode,
+                    Stats = seasonalMapCreateDto.Stats,
                     SeasonStartDate = seasonalMapCreateDto.SeasonStartDate,
                     SeasonEndDate = seasonalMapCreateDto.SeasonEndDate
                 };
@@ -147,6 +150,7 @@ namespace API.Controllers.Seasonal
                 seasonalMap.Name = seasonalMapUpdateDto.Name;
                 seasonalMap.Description = seasonalMapUpdateDto.Description;
                 seasonalMap.Mode = seasonalMapUpdateDto.Mode;
+                seasonalMap.Stats = seasonalMapUpdateDto.Stats;
                 seasonalMap.SeasonStartDate = seasonalMapUpdateDto.SeasonStartDate;
                 seasonalMap.SeasonEndDate = seasonalMapUpdateDto.SeasonEndDate;
 

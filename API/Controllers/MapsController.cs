@@ -37,6 +37,7 @@ namespace API.Controllers
                     Name = m.Name,
                     Description = m.Description,
                     Mode = m.Mode,
+                    Stats = m.Stats,
                 })
                 .ToListAsync();
         }
@@ -58,12 +59,13 @@ namespace API.Controllers
                 Name = map.Name,
                 Description = map.Description,
                 Mode = map.Mode,
+                Stats = map.Stats
             };
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateMap(MapCreateDto mapCreateDto)
+        public async Task<IActionResult> CreateMap([FromBody] MapCreateDto mapCreateDto)
         {
             try
             {
@@ -83,6 +85,7 @@ namespace API.Controllers
                     Name = mapCreateDto.Name,
                     Description = mapCreateDto.Description,
                     Mode = mapCreateDto.Mode,
+                    Stats = mapCreateDto.Stats,
                 };
 
                 _logger.LogInformation("Creating map with Name: {Name}", map.Name);
@@ -98,6 +101,7 @@ namespace API.Controllers
                     Name = map.Name,
                     Description = map.Description,
                     Mode = map.Mode,
+                    Stats = map.Stats,
                 });
             }
 
@@ -119,7 +123,7 @@ namespace API.Controllers
                     return BadRequest("Map ID mismatch.");
                 }
 
-                var map = await _context.Maps.FirstOrDefaultAsync();
+                var map = await _context.Maps.FirstOrDefaultAsync(m => m.MapId == id);
                 if (map == null)
                 {
                     _logger.LogInformation("Map with ID {Id} not found.", id);
@@ -128,6 +132,7 @@ namespace API.Controllers
 
                 map.Name = mapUpdateDto.Name;
                 map.Description = mapUpdateDto.Description;
+                map.Stats = mapUpdateDto.Stats;
 
                 _logger.LogInformation("Updating Map with name {Name}...", map.Name);
                 _context.Update(map);

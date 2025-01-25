@@ -6,6 +6,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Mode { get; set; }
+        public string Stats { get; set; }
         public List<SeasonalModifierDto> SeasonalModifiers { get; set; }
         public DateTime SeasonStartDate { get; set; }
         public DateTime SeasonEndDate { get; set; }
