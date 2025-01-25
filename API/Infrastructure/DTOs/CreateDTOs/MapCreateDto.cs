@@ -13,6 +13,7 @@ namespace API.Infrastructure.DTOs.CreateDTOs
         [Required]
         [StringLength(30, MinimumLength = 3)]
         public string Mode { get; set; }
+        [Required]
         public string Stats { get; set; }
     }
 }
