@@ -7,6 +7,6 @@ namespace API.Infrastructure.Dtos
         public int AccountId { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

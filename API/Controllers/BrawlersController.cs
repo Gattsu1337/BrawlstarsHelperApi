@@ -60,13 +60,13 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            var starPowerDtos = brawler.StarPowers.Select(sp => new StarPowerDto
-            {
-                StarPowerId = sp.StarPowerId,
-                Name = sp.Name,
-                Description = sp.Description,
-                ImageUrl = sp.ImageUrl
-            }).ToList();
+            //var starPowerDtos = brawler.StarPowers.Select(sp => new StarPowerDto
+            //{
+            //    StarPowerId = sp.StarPowerId,
+            //    Name = sp.Name,
+            //    Description = sp.Description,
+            //    ImageUrl = sp.ImageUrl
+            //}).ToList();
 
             return new BrawlerDto
             {
