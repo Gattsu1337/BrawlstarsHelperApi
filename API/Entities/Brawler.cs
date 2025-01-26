@@ -13,7 +13,8 @@ namespace Common.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
-        public string Rarity { get; set; } 
+        public string Rarity { get; set; }
+        public string ImageUrl { get; set; }
 
         // Brawler stats
         public int Health { get; set; }
@@ -25,8 +26,8 @@ namespace Common.Entities
 
         public ICollection<AccountBrawler> UnlockedByAccounts { get; set; }
         public ICollection<BrawlerGears> UnlockedGears { get; set; }
-        public ICollection<StarPower> StarPowers { get; set; }
+        public ICollection<StarPower>? StarPowers { get; set; }
         public ICollection<Gadget> Gadgets { get; set; }
-        public HyperCharge? HyperCharge { get; set; }
+        //public HyperCharge? HyperCharge { get; set; }
     }
 }

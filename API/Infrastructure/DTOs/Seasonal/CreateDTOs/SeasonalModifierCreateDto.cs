@@ -11,5 +11,7 @@ namespace API.Infrastructure.DTOs.Seasonal.CreateDTOs
         [StringLength(200, MinimumLength = 3)]
         public string Description { get; set; }
         public int SeasonalMapId { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
     }
 }

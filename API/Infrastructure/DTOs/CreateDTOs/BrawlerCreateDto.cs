@@ -34,6 +34,10 @@ namespace API.Infrastructure.DTOs.CreateDTOs
         [Required]
         [StringLength(150, MinimumLength = 3)]
         public string Range { get; set; }
-        public HyperChargeCreateDto? HyperCharge { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
+        //[Required]
+        //public ICollection<StarPower> StarPowers { get; set; }
+        //public HyperChargeCreateDto? HyperCharge { get; set; }
     }
 }

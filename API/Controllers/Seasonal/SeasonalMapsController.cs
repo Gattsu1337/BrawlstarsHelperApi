@@ -39,7 +39,8 @@ namespace API.Controllers.Seasonal
                     Mode = m.Mode,
                     Stats = m.Stats,
                     SeasonStartDate = m.SeasonStartDate,
-                    SeasonEndDate = m.SeasonEndDate
+                    SeasonEndDate = m.SeasonEndDate,
+                    ImageUrl = m.ImageUrl,
                 })
                 .ToListAsync();
         }
@@ -66,7 +67,8 @@ namespace API.Controllers.Seasonal
                 Mode = seasonalMap.Mode,
                 Stats = seasonalMap.Stats,
                 SeasonStartDate = seasonalMap.SeasonStartDate,
-                SeasonEndDate = seasonalMap.SeasonEndDate
+                SeasonEndDate = seasonalMap.SeasonEndDate,
+                ImageUrl = seasonalMap.ImageUrl
             };
         }
 
@@ -94,7 +96,8 @@ namespace API.Controllers.Seasonal
                     Mode = seasonalMapCreateDto.Mode,
                     Stats = seasonalMapCreateDto.Stats,
                     SeasonStartDate = seasonalMapCreateDto.SeasonStartDate,
-                    SeasonEndDate = seasonalMapCreateDto.SeasonEndDate
+                    SeasonEndDate = seasonalMapCreateDto.SeasonEndDate,
+                    ImageUrl = seasonalMapCreateDto.ImageUrl
                 };
 
                 _logger.LogInformation("Creating map with Name: {Name}", map.Name);
@@ -111,7 +114,8 @@ namespace API.Controllers.Seasonal
                     Description = map.Description,
                     Mode = map.Mode,
                     SeasonStartDate = map.SeasonStartDate,
-                    SeasonEndDate = map.SeasonEndDate
+                    SeasonEndDate = map.SeasonEndDate,
+                    ImageUrl = map.ImageUrl
                 });
             }
 
@@ -153,6 +157,7 @@ namespace API.Controllers.Seasonal
                 seasonalMap.Stats = seasonalMapUpdateDto.Stats;
                 seasonalMap.SeasonStartDate = seasonalMapUpdateDto.SeasonStartDate;
                 seasonalMap.SeasonEndDate = seasonalMapUpdateDto.SeasonEndDate;
+                seasonalMap.ImageUrl = seasonalMapUpdateDto.ImageUrl;
 
                 if (seasonalMapUpdateDto.SeasonalModifierIds != null)
                 {

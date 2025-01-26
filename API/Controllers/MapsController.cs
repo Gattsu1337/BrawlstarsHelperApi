@@ -37,6 +37,7 @@ namespace API.Controllers
                     Name = m.Name,
                     Description = m.Description,
                     Mode = m.Mode,
+                    ImageUrl = m.ImageUrl,
                     Stats = m.Stats,
                 })
                 .ToListAsync();
@@ -46,7 +47,10 @@ namespace API.Controllers
         public async Task<ActionResult<MapDto>> GetMap(int id)
         {
             var map = await _context.Maps.FirstOrDefaultAsync(m => m.MapId == id);
-
+            foreach (var header in Request.Headers)
+            {
+                Console.WriteLine($"Header: {header.Key} = {header.Value}");
+            }
             if (map == null)
             {
                 _logger.LogError("Map with ID {Id} not found.", id);
@@ -59,8 +63,10 @@ namespace API.Controllers
                 Name = map.Name,
                 Description = map.Description,
                 Mode = map.Mode,
+                ImageUrl = map.ImageUrl,
                 Stats = map.Stats
             };
+
         }
 
 
@@ -85,6 +91,7 @@ namespace API.Controllers
                     Name = mapCreateDto.Name,
                     Description = mapCreateDto.Description,
                     Mode = mapCreateDto.Mode,
+                    ImageUrl = mapCreateDto.ImageUrl,
                     Stats = mapCreateDto.Stats,
                 };
 
@@ -101,6 +108,7 @@ namespace API.Controllers
                     Name = map.Name,
                     Description = map.Description,
                     Mode = map.Mode,
+                    ImageUrl = map.ImageUrl,
                     Stats = map.Stats,
                 });
             }
@@ -132,6 +140,8 @@ namespace API.Controllers
 
                 map.Name = mapUpdateDto.Name;
                 map.Description = mapUpdateDto.Description;
+                map.Mode = mapUpdateDto.Mode;
+                map.ImageUrl = mapUpdateDto.ImageUrl;
                 map.Stats = mapUpdateDto.Stats;
 
                 _logger.LogInformation("Updating Map with name {Name}...", map.Name);

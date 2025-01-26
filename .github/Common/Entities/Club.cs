@@ -11,6 +11,7 @@ namespace Common.Entities
         public int ClubId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public ICollection<Account> Members { get; set; }
         public int MembersCount { get; set; }
         public int RequiredTrophies { get; set; }

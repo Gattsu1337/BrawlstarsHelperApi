@@ -1,4 +1,5 @@
-﻿using API.Infrastructure.DTOs;
+﻿using API.Infrastructure;
+using API.Infrastructure.DTOs;
 using API.Infrastructure.DTOs.CreateDTOs;
 using API.Infrastructure.DTOs.UpdateDTOs;
 using Common.Entities;
@@ -26,6 +27,14 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IEnumerable<BrawlerDto>> GetBrawlers()
         {
+            //var starPowerDtos = _context.StarPowers.Select(sp => new StarPowerDto
+            //{
+            //    StarPowerId = sp.StarPowerId,
+            //    Name = sp.Name,
+            //    Description = sp.Description,
+            //    ImageUrl = sp.ImageUrl
+            //}).ToList();
+
             return await _context.Brawlers
                 .Select(b => new BrawlerDto
                 {
@@ -33,7 +42,9 @@ namespace API.Controllers
                     Name = b.Name,
                     Description = b.Description,
                     Type = b.Type,
-                    Rarity = b.Rarity
+                    Rarity = b.Rarity,
+                    ImageUrl = b.ImageUrl,
+                    //StarPowers = starPowerDtos
                 })
                 .ToListAsync();
         }
@@ -49,6 +60,14 @@ namespace API.Controllers
                 return NotFound();
             }
 
+            var starPowerDtos = brawler.StarPowers.Select(sp => new StarPowerDto
+            {
+                StarPowerId = sp.StarPowerId,
+                Name = sp.Name,
+                Description = sp.Description,
+                ImageUrl = sp.ImageUrl
+            }).ToList();
+
             return new BrawlerDto
             {
                 BrawlerId = brawler.BrawlerId,
@@ -56,6 +75,8 @@ namespace API.Controllers
                 Description = brawler.Description,
                 Type = brawler.Type,
                 Rarity = brawler.Rarity,
+                ImageUrl = brawler.ImageUrl,
+                //StarPowers= starPowerDtos
             };
         }
 
@@ -75,26 +96,29 @@ namespace API.Controllers
                     return Conflict("Brawler already exists!");
                 }
 
+
                 var brawler = new Brawler
                 {
                     Name = brawlerDto.Name,
                     Type = brawlerDto.Type,
                     Rarity = brawlerDto.Rarity,
                     Description = brawlerDto.Description,
+                    ImageUrl = brawlerDto.ImageUrl,
                     Health = brawlerDto.Health,
                     Attack = brawlerDto.Attack,
                     MovementSpeed = brawlerDto.MovementSpeed,
                     ReloadSpeed = brawlerDto.ReloadSpeed,
                     Range = brawlerDto.Range,
-                    HyperCharge = brawlerDto.HyperCharge == null ? null : new HyperCharge
-                    {
-                        Name = brawlerDto.HyperCharge.Name,
-                        Description = brawlerDto.HyperCharge.Description,
-                        BrawlerId = brawlerDto.HyperCharge.BrawlerId,
-                        SpeedIncrease = brawlerDto.HyperCharge.SpeedIncrease,
-                        DamageIncrease = brawlerDto.HyperCharge.DamageIncrease,
-                        ShieldIncrease = brawlerDto.HyperCharge.ShieldIncrease,
-                    }
+                    //StarPowers = brawlerDto.StarPowers,
+                    //HyperCharge = brawlerDto.HyperCharge == null ? null : new HyperCharge
+                    //{
+                    //    Name = brawlerDto.HyperCharge.Name,
+                    //    Description = brawlerDto.HyperCharge.Description,
+                    //    BrawlerId = brawlerDto.HyperCharge.BrawlerId,
+                    //    SpeedIncrease = brawlerDto.HyperCharge.SpeedIncrease,
+                    //    DamageIncrease = brawlerDto.HyperCharge.DamageIncrease,
+                    //    ShieldIncrease = brawlerDto.HyperCharge.ShieldIncrease,
+                    //}
                 };
 
                 _logger.LogInformation("Creating brawler with Name: {Name}", brawlerDto.Name);
@@ -104,11 +128,20 @@ namespace API.Controllers
 
                 _logger.LogInformation("Brawler successfully created with ID: {Id}", brawler.BrawlerId);
 
+                //var starPowerDtos = brawler.StarPowers.Select(sp => new StarPowerDto
+                //{
+                //    StarPowerId = sp.StarPowerId,
+                //    Name = sp.Name,
+                //    Description = sp.Description,
+                //    ImageUrl = sp.ImageUrl
+                //}).ToList();
+
                 return CreatedAtAction(nameof(GetBrawler), new { id = brawler.BrawlerId }, new BrawlerDto
                 {
                     BrawlerId = brawler.BrawlerId,
                     Name = brawler.Name,
                     Description = brawler.Description,
+                    ImageUrl = brawler.ImageUrl,
                     Type = brawler.Type,
                     Rarity = brawler.Rarity,
                     Health = brawlerDto.Health,
@@ -116,16 +149,17 @@ namespace API.Controllers
                     MovementSpeed = brawlerDto.MovementSpeed,
                     ReloadSpeed = brawlerDto.ReloadSpeed,
                     Range = brawlerDto.Range,
-                    HyperCharge = brawlerDto.HyperCharge == null ? null : new HyperChargeDto
-                    {
-                        HyperChargeId = brawler.HyperCharge.HyperChargeId,
-                        Name = brawlerDto.HyperCharge.Name,
-                        Description = brawlerDto.HyperCharge.Description,
-                        BrawlerId = brawlerDto.HyperCharge.BrawlerId,
-                        SpeedIncrease = brawlerDto.HyperCharge.SpeedIncrease,
-                        DamageIncrease = brawlerDto.HyperCharge.DamageIncrease,
-                        ShieldIncrease = brawlerDto.HyperCharge.ShieldIncrease,
-                    }
+                    //StarPowers = starPowerDtos,
+                    //HyperCharge = brawlerDto.HyperCharge == null ? null : new HyperChargeDto
+                    //{
+                    //    HyperChargeId = brawler.HyperCharge.HyperChargeId,
+                    //    Name = brawlerDto.HyperCharge.Name,
+                    //    Description = brawlerDto.HyperCharge.Description,
+                    //    BrawlerId = brawlerDto.HyperCharge.BrawlerId,
+                    //    SpeedIncrease = brawlerDto.HyperCharge.SpeedIncrease,
+                    //    DamageIncrease = brawlerDto.HyperCharge.DamageIncrease,
+                    //    ShieldIncrease = brawlerDto.HyperCharge.ShieldIncrease,
+                    //}
                 });
 
             }
@@ -157,6 +191,17 @@ namespace API.Controllers
 
                 brawler.Name = brawlerUpdateDto.Name;
                 brawler.Description = brawlerUpdateDto.Description;
+                brawler.ImageUrl = brawlerUpdateDto.ImageUrl;
+                brawler.Type = brawlerUpdateDto.Type;
+                brawler.Rarity = brawlerUpdateDto.Rarity;
+                brawler.Attack = brawlerUpdateDto.Attack;
+                brawler.Health = brawlerUpdateDto.Health;
+                brawler.Range = brawlerUpdateDto.Range;
+                brawler.ReloadSpeed = brawlerUpdateDto.ReloadSpeed;
+                brawler.MovementSpeed = brawlerUpdateDto.MovementSpeed;
+                //brawler.StarPowers = brawlerUpdateDto.StarPowers;
+                //if (brawlerUpdateDto.HyperCharge != null) brawler.HyperCharge = brawlerUpdateDto.HyperCharge;
+
 
                 _logger.LogInformation("Updating Brawler with name {Name}...", brawler.Name);
                 _context.Update(brawler);

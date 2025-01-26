@@ -13,6 +13,7 @@ namespace Common.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public string ImageUrl { get; set; }
         public int? ClubId { get; set; }
         public Club Club { get; set; }
         public AccountStats AccountStats { get; set; }

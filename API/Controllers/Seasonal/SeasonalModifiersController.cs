@@ -35,7 +35,8 @@ namespace API.Controllers
                 {
                     SeasonalModifierId = m.SeasonalModifierId,
                     Name = m.Name,
-                    Description = m.Description
+                    Description = m.Description,
+                    ImageUrl = m.ImageUrl,
                 })
                 .ToListAsync();
         }
@@ -56,6 +57,7 @@ namespace API.Controllers
                 SeasonalModifierId = id,
                 Name = modifier.Name,
                 Description = modifier.Description,
+                ImageUrl = modifier.ImageUrl
             };
         }
 
@@ -81,6 +83,7 @@ namespace API.Controllers
                     Name = SeasonalModifierCreateDto.Name,
                     Description = SeasonalModifierCreateDto.Description,
                     SeasonalMapId = SeasonalModifierCreateDto.SeasonalMapId,
+                    ImageUrl = SeasonalModifierCreateDto.ImageUrl
                 };
 
                 _logger.LogInformation("Creating Seasonal Modifier with Name: {Name}", modifier.Name);
@@ -95,7 +98,8 @@ namespace API.Controllers
                     SeasonalModifierId = modifier.SeasonalModifierId,
                     Name = modifier.Name,
                     Description = modifier.Description,
-                    
+                    ImageUrl = modifier.ImageUrl
+
                 });
             }
 
@@ -125,6 +129,7 @@ namespace API.Controllers
 
                 seasonalModifier.Name = seasonalModifierUpdateDto.Name;
                 seasonalModifier.Description = seasonalModifierUpdateDto.Description;
+                seasonalModifier.ImageUrl = seasonalModifierUpdateDto.ImageUrl;
 
                 _logger.LogInformation("Updating seasonal modifier with Name {Name}.", seasonalModifier.Name);
                 await _context.SaveChangesAsync();

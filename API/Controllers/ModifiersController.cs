@@ -36,7 +36,8 @@ namespace API.Controllers
                 {
                     ModifierId = m.ModifierId,
                     Name = m.Name,
-                    Description = m.Description
+                    Description = m.Description,
+                    ImageUrl = m.ImageUrl,
                 })
                 .ToListAsync();
         }
@@ -57,6 +58,7 @@ namespace API.Controllers
                 ModifierId = id,
                 Name = modifier.Name,
                 Description = modifier.Description,
+                ImageUrl = modifier.ImageUrl,
             };
         }
 
@@ -82,6 +84,7 @@ namespace API.Controllers
                 {
                     Name = ModifierCreateDto.Name,
                     Description = ModifierCreateDto.Description,
+                    ImageUrl = ModifierCreateDto.ImageUrl,
                 };
 
                 _logger.LogInformation("Creating modifier with Name: {Name}", modifier.Name);
@@ -96,6 +99,7 @@ namespace API.Controllers
                     ModifierId = modifier.ModifierId,
                     Name = modifier.Name,
                     Description = modifier.Description,
+                    ImageUrl = modifier.ImageUrl,
                 });
             }
 
@@ -127,6 +131,7 @@ namespace API.Controllers
 
                 modifier.Name = modifierUpdateDto.Name;
                 modifier.Description = modifierUpdateDto.Description;
+                modifier.ImageUrl = modifierUpdateDto.ImageUrl;
 
                 _logger.LogInformation("Updating modifier with name {Name}...", modifier.Name);
                 _context.Update(modifier);

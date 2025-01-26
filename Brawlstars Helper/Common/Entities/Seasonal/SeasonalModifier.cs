@@ -11,6 +11,7 @@ namespace Common.Entities.Seasonal
         public int SeasonalModifierId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public int SeasonalMapId { get; set; }
         public SeasonalMap SeasonalMap { get; set; }
     }

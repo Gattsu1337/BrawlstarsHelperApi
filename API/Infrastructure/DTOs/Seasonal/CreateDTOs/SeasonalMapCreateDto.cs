@@ -15,6 +15,8 @@ namespace API.Infrastructure.DTOs.Seasonal.CreateDTOs
         public string Mode { get; set; }
         public string Stats { get; set; }
         [Required]
+        public string ImageUrl { get; set; }
+        [Required]
         public DateTime SeasonStartDate { get; set; }
         [Required]
         public DateTime SeasonEndDate { get; set; }

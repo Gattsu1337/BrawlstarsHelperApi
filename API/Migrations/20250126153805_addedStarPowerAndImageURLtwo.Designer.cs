@@ -3,6 +3,7 @@ using System;
 using Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(BrawlstarsHelperDbContext))]
-    partial class BrawlstarsHelperDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250126153805_addedStarPowerAndImageURLtwo")]
+    partial class addedStarPowerAndImageURLtwo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.12");
@@ -433,12 +436,8 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BrawlerId")
+                    b.Property<int>("BrawlerId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("BrawlerName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -555,7 +554,8 @@ namespace API.Migrations
                     b.HasOne("Common.Entities.Brawler", "Brawler")
                         .WithMany("StarPowers")
                         .HasForeignKey("BrawlerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Brawler");
                 });

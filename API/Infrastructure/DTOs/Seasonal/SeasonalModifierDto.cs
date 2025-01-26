@@ -1,4 +1,6 @@
-﻿namespace API.Infrastructure.DTOs.Seasonal
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Infrastructure.DTOs.Seasonal
 {
     public class SeasonalModifierDto
     {
@@ -6,5 +8,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public int SeasonalMapId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

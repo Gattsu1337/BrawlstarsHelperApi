@@ -13,6 +13,7 @@ namespace Common.Entities
         public int HyperChargeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public int BrawlerId { get; set; }
         public int SpeedIncrease { get; set; }
         public int DamageIncrease { get; set; }

@@ -38,7 +38,8 @@ namespace API.Controllers
                 {
                     AccountId = a.AccountId,
                     Username = a.Username,
-                    Email = a.Email
+                    Email = a.Email,
+                    ImageUrl = a.ImageUrl
                 })
                 .ToListAsync();
         }
@@ -59,7 +60,8 @@ namespace API.Controllers
             {
                 AccountId = account.AccountId,
                 Username = account.Username,
-                Email = account.Email
+                Email = account.Email,
+                ImageUrl = account.ImageUrl
             };
         }
 
@@ -73,16 +75,17 @@ namespace API.Controllers
                     return BadRequest("Map ID mismatch.");
                 }
 
-                var seasonalModifier = await _context.Accounts.FindAsync(id);
-                if (seasonalModifier == null)
+                var account = await _context.Accounts.FindAsync(id);
+                if (account == null)
                 {
                     return NotFound($"Seasonal modifier with ID {id} not found.");
                 }
 
-                seasonalModifier.Username = accountUpdateDto.Username;
-                seasonalModifier.Email = accountUpdateDto.Email;
+                account.Username = accountUpdateDto.Username;
+                account.Email = accountUpdateDto.Email;
+                account.ImageUrl = accountUpdateDto.ImageUrl;
 
-                _logger.LogInformation("Updating Account with Username {Username}.", seasonalModifier.Username);
+                _logger.LogInformation("Updating Account with Username {Username}.", account.Username);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Account with ID {Id} successfully updated.", id);
 

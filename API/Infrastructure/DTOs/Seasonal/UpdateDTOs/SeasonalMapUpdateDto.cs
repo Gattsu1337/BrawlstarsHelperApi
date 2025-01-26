@@ -17,6 +17,8 @@ namespace API.Infrastructure.DTOs.Seasonal.UpdateDTOs
         public string Mode { get; set; }
         public string Stats { get; set; }
         [Required]
+        public string ImageUrl { get; set; }
+        [Required]
         public List<int> SeasonalModifierIds { get; set; } // IDs of the related SeasonalModifiers
         [Required]
         public DateTime SeasonStartDate { get; set; }

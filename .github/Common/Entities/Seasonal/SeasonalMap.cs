@@ -13,6 +13,7 @@ namespace Common.Entities.Seasonal
         public string Description { get; set; }
         public string Mode { get; set; }
         public string Stats { get; set; }
+        public string ImageUrl { get; set; }
         public ICollection<SeasonalModifier> SeasonalModifiers { get; set; }
         public DateTime SeasonStartDate { get; set; }
         public DateTime SeasonEndDate { get; set; }

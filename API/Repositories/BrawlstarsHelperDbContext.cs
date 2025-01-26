@@ -66,12 +66,12 @@ namespace Common.Repositories
                 .HasForeignKey(g => g.BrawlerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Brawler>()
-                .HasOne(b => b.HyperCharge)
-                .WithOne(h => h.Brawler)
-                .HasForeignKey<HyperCharge>(h => h.BrawlerId)
-                .IsRequired(false)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Brawler>()
+            //    .HasOne(b => b.HyperCharge)
+            //    .WithOne(h => h.Brawler)
+            //    .HasForeignKey<HyperCharge>(h => h.BrawlerId)
+            //    .IsRequired(false)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
 
             #endregion
@@ -114,10 +114,10 @@ namespace Common.Repositories
             modelBuilder.Entity<StarPower>()
                 .HasKey(s => s.StarPowerId);
 
-            modelBuilder.Entity<StarPower>()
-                .HasOne(s => s.Brawler)
-                .WithMany(b => b.StarPowers)
-                .HasForeignKey(s => s.BrawlerId);
+            //modelBuilder.Entity<StarPower>()
+            //    .HasOne(s => s.Brawler)
+            //    .WithMany(b => b.StarPowers)
+            //    .HasForeignKey(s => s.BrawlerId);
             #endregion
 
             #region Gadget Config
@@ -140,11 +140,11 @@ namespace Common.Repositories
             modelBuilder.Entity<HyperCharge>()
                 .HasKey(h => h.HyperChargeId);
 
-            modelBuilder.Entity<HyperCharge>()
-                .HasOne(h => h.Brawler)
-                .WithOne(b => b.HyperCharge)
-                .HasForeignKey<HyperCharge>(h => h.BrawlerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<HyperCharge>()
+            //    .HasOne(h => h.Brawler)
+            //    .WithOne(b => b.HyperCharge)
+            //    .HasForeignKey<HyperCharge>(h => h.BrawlerId)
+            //    .OnDelete(DeleteBehavior.Restrict);
             #endregion
 
             #region Club Config

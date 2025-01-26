@@ -32,6 +32,7 @@ namespace API.Controllers
                     HyperChargeId = hc.HyperChargeId,
                     Name = hc.Name,
                     Description = hc.Description,
+                    ImageUrl = hc.ImageUrl,
                     BrawlerId = hc.BrawlerId,
                     SpeedIncrease = hc.SpeedIncrease,
                     ShieldIncrease = hc.ShieldIncrease,
@@ -56,6 +57,7 @@ namespace API.Controllers
                 HyperChargeId = hypercharge.HyperChargeId,
                 Name = hypercharge.Name,
                 Description = hypercharge.Description,
+                ImageUrl = hypercharge.ImageUrl,
                 BrawlerId = hypercharge.BrawlerId,
                 SpeedIncrease = hypercharge.SpeedIncrease,
                 ShieldIncrease = hypercharge.ShieldIncrease,
@@ -85,6 +87,7 @@ namespace API.Controllers
                 {
                     Name = hyperChargeDto.Name,
                     Description = hyperChargeDto.Description,
+                    ImageUrl = hyperChargeDto.ImageUrl,
                     BrawlerId = hyperChargeDto.BrawlerId,
                     SpeedIncrease = hyperChargeDto.SpeedIncrease,
                     ShieldIncrease = hyperChargeDto.ShieldIncrease,
@@ -103,6 +106,7 @@ namespace API.Controllers
                     HyperChargeId = hypercharge.HyperChargeId,
                     Name = hypercharge.Name,
                     Description = hypercharge.Description,
+                    ImageUrl = hypercharge.ImageUrl,
                     SpeedIncrease = hypercharge.SpeedIncrease,
                     ShieldIncrease = hypercharge.ShieldIncrease,
                     DamageIncrease = hypercharge.DamageIncrease,
@@ -137,6 +141,7 @@ namespace API.Controllers
 
                 hypercharge.Name = hyperchargeUpdateDto.Name;
                 hypercharge.Description = hyperchargeUpdateDto.Description;
+                hypercharge.ImageUrl = hyperchargeUpdateDto.ImageUrl;
                 hypercharge.SpeedIncrease = hyperchargeUpdateDto.SpeedIncrease;
                 hypercharge.ShieldIncrease = hyperchargeUpdateDto.ShieldIncrease;
                 hypercharge.DamageIncrease = hyperchargeUpdateDto.DamageIncrease;

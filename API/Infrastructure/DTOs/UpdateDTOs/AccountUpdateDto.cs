@@ -12,5 +12,7 @@ namespace API.Infrastructure.DTOs.UpdateDTOs
         [Required]
         [StringLength(30, MinimumLength = 3)]
         public string Email { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
     }
 }

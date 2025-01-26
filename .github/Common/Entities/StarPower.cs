@@ -13,6 +13,7 @@ namespace Common.Entities
         public string Description { get; set; }
 
         public int BrawlerId { get; set; }
+        public string ImageUrl { get; set; }
         public Brawler Brawler { get; set; }
         public bool IsChosen { get; set; }
     }

@@ -9,5 +9,6 @@
         public int SpeedIncrease { get; set; }
         public int DamageIncrease { get; set; }
         public int ShieldIncrease { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

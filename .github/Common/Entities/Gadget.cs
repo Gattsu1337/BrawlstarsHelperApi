@@ -11,6 +11,7 @@ namespace Common.Entities
         public int GadgetId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public int BrawlerId { get; set; }
         public Brawler Brawler { get; set; }
         public bool IsChosen { get; set; }

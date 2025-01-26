@@ -1,4 +1,6 @@
-﻿namespace API.Infrastructure.DTOs.Seasonal
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Infrastructure.DTOs.Seasonal
 {
     public class SeasonalMapDto
     {
@@ -7,6 +9,7 @@
         public string Description { get; set; }
         public string Mode { get; set; }
         public string Stats { get; set; }
+        public string ImageUrl { get; set; }
         public List<SeasonalModifierDto> SeasonalModifiers { get; set; }
         public DateTime SeasonStartDate { get; set; }
         public DateTime SeasonEndDate { get; set; }
