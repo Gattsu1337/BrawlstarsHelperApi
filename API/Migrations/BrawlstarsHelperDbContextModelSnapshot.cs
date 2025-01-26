@@ -302,8 +302,7 @@ namespace API.Migrations
 
                     b.HasKey("HyperChargeId");
 
-                    b.HasIndex("BrawlerId")
-                        .IsUnique();
+                    b.HasIndex("BrawlerId");
 
                     b.ToTable("HyperCharges");
                 });
@@ -532,9 +531,10 @@ namespace API.Migrations
             modelBuilder.Entity("Common.Entities.HyperCharge", b =>
                 {
                     b.HasOne("Common.Entities.Brawler", "Brawler")
-                        .WithOne("HyperCharge")
-                        .HasForeignKey("Common.Entities.HyperCharge", "BrawlerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("BrawlerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Brawler");
                 });
@@ -571,8 +571,6 @@ namespace API.Migrations
             modelBuilder.Entity("Common.Entities.Brawler", b =>
                 {
                     b.Navigation("Gadgets");
-
-                    b.Navigation("HyperCharge");
 
                     b.Navigation("StarPowers");
 

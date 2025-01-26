@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(BrawlstarsHelperDbContext))]
-    [Migration("20250126165028_addedStarPowerAndImageURLthree")]
-    partial class addedStarPowerAndImageURLthree
+    [Migration("20250126194501_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -305,8 +305,7 @@ namespace API.Migrations
 
                     b.HasKey("HyperChargeId");
 
-                    b.HasIndex("BrawlerId")
-                        .IsUnique();
+                    b.HasIndex("BrawlerId");
 
                     b.ToTable("HyperCharges");
                 });
@@ -535,9 +534,10 @@ namespace API.Migrations
             modelBuilder.Entity("Common.Entities.HyperCharge", b =>
                 {
                     b.HasOne("Common.Entities.Brawler", "Brawler")
-                        .WithOne("HyperCharge")
-                        .HasForeignKey("Common.Entities.HyperCharge", "BrawlerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("BrawlerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Brawler");
                 });
@@ -574,8 +574,6 @@ namespace API.Migrations
             modelBuilder.Entity("Common.Entities.Brawler", b =>
                 {
                     b.Navigation("Gadgets");
-
-                    b.Navigation("HyperCharge");
 
                     b.Navigation("StarPowers");
 

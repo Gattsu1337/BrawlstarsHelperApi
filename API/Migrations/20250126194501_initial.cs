@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,6 +21,7 @@ namespace API.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     Rarity = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     Health = table.Column<int>(type: "INTEGER", nullable: false),
                     Attack = table.Column<int>(type: "INTEGER", nullable: false),
                     MovementSpeed = table.Column<string>(type: "TEXT", nullable: false),
@@ -40,6 +41,7 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     MembersCount = table.Column<int>(type: "INTEGER", nullable: false),
                     RequiredTrophies = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -56,6 +58,7 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     UnlockCost = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -72,6 +75,7 @@ namespace API.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Mode = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     Stats = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -86,7 +90,8 @@ namespace API.Migrations
                     ModifierId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false)
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,6 +107,8 @@ namespace API.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Mode = table.Column<string>(type: "TEXT", nullable: false),
+                    Stats = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     SeasonStartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     SeasonEndDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -118,6 +125,7 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
                     IsChosen = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -140,6 +148,7 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
                     SpeedIncrease = table.Column<int>(type: "INTEGER", nullable: false),
                     DamageIncrease = table.Column<int>(type: "INTEGER", nullable: false),
@@ -153,7 +162,7 @@ namespace API.Migrations
                         column: x => x.BrawlerId,
                         principalTable: "Brawlers",
                         principalColumn: "BrawlerId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,8 +173,9 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsChosen = table.Column<bool>(type: "INTEGER", nullable: false)
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
+                    BrawlerName = table.Column<string>(type: "TEXT", nullable: false),
+                    BrawlerId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -187,6 +197,7 @@ namespace API.Migrations
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     ClubId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -233,6 +244,7 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     SeasonalMapId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -330,8 +342,7 @@ namespace API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_HyperCharges_BrawlerId",
                 table: "HyperCharges",
-                column: "BrawlerId",
-                unique: true);
+                column: "BrawlerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SeasonalModifiers_SeasonalMapId",
