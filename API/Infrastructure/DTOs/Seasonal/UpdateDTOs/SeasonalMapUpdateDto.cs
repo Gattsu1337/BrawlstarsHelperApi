@@ -15,7 +15,6 @@ namespace API.Infrastructure.DTOs.Seasonal.UpdateDTOs
         [Required]
         [StringLength(200, MinimumLength = 3)]
         public string Mode { get; set; }
-        public string Stats { get; set; }
         [Required]
         public string ImageUrl { get; set; }
         [Required]

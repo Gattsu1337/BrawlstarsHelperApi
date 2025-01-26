@@ -37,12 +37,8 @@ namespace API.Controllers
                     Name = m.Name,
                     Description = m.Description,
                     Mode = m.Mode,
-<<<<<<< HEAD
                     ImageUrl = m.ImageUrl,
                     Stats = m.Stats,
-=======
-                    Stats = m.Stats
->>>>>>> 10839fa1ebe77e83b99d2981b8bcecfea4577ba7
                 })
                 .ToListAsync();
         }
@@ -67,10 +63,7 @@ namespace API.Controllers
                 Name = map.Name,
                 Description = map.Description,
                 Mode = map.Mode,
-<<<<<<< HEAD
                 ImageUrl = map.ImageUrl,
-=======
->>>>>>> 10839fa1ebe77e83b99d2981b8bcecfea4577ba7
                 Stats = map.Stats
             };
 
@@ -98,12 +91,8 @@ namespace API.Controllers
                     Name = mapCreateDto.Name,
                     Description = mapCreateDto.Description,
                     Mode = mapCreateDto.Mode,
-<<<<<<< HEAD
                     ImageUrl = mapCreateDto.ImageUrl,
                     Stats = mapCreateDto.Stats,
-=======
-                    Stats = mapCreateDto.Stats
->>>>>>> 10839fa1ebe77e83b99d2981b8bcecfea4577ba7
                 };
 
                 _logger.LogInformation("Creating map with Name: {Name}", map.Name);
@@ -119,12 +108,8 @@ namespace API.Controllers
                     Name = map.Name,
                     Description = map.Description,
                     Mode = map.Mode,
-<<<<<<< HEAD
                     ImageUrl = map.ImageUrl,
                     Stats = map.Stats,
-=======
-                    Stats = map.Stats
->>>>>>> 10839fa1ebe77e83b99d2981b8bcecfea4577ba7
                 });
             }
 
@@ -155,11 +140,8 @@ namespace API.Controllers
 
                 map.Name = mapUpdateDto.Name;
                 map.Description = mapUpdateDto.Description;
-<<<<<<< HEAD
                 map.Mode = mapUpdateDto.Mode;
                 map.ImageUrl = mapUpdateDto.ImageUrl;
-=======
->>>>>>> 10839fa1ebe77e83b99d2981b8bcecfea4577ba7
                 map.Stats = mapUpdateDto.Stats;
 
                 _logger.LogInformation("Updating Map with name {Name}...", map.Name);
