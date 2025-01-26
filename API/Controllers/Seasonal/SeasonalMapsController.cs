@@ -113,6 +113,7 @@ namespace API.Controllers.Seasonal
                     Name = map.Name,
                     Description = map.Description,
                     Mode = map.Mode,
+                    Stats = map.Stats,
                     SeasonStartDate = map.SeasonStartDate,
                     SeasonEndDate = map.SeasonEndDate,
                     ImageUrl = map.ImageUrl
