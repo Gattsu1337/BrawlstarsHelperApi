@@ -131,6 +131,7 @@ namespace API
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowAll");
             if (!app.Environment.IsDevelopment())
             {
                 app.UseHttpsRedirection();
@@ -138,7 +139,6 @@ namespace API
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCors("AllowAll");
             app.MapControllers();
 
             app.Run();
