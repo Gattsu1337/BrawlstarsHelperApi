@@ -17,7 +17,6 @@ namespace API.Infrastructure.DTOs.UpdateDTOs
         [StringLength(20, MinimumLength = 3)]
         public string Rarity { get; set; }
         [Required]
-        [StringLength(150, MinimumLength = 3)]
         public string Description { get; set; }
         [Required]
         public string ImageUrl { get; set; }

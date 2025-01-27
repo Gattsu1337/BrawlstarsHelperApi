@@ -6,16 +6,12 @@ namespace API.Infrastructure.DTOs.CreateDTOs
     public class BrawlerCreateDto
     {
         [Required]
-        [StringLength(30, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
-        [StringLength(20, MinimumLength = 3)]
         public string Type { get; set; }
         [Required]
-        [StringLength(20, MinimumLength = 3)]
         public string Rarity { get; set; }
         [Required]
-        [StringLength(150, MinimumLength = 3)]
         public string Description { get; set; }
 
         // Brawler stats
